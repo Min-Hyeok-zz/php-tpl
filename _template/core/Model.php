@@ -8,7 +8,7 @@
 		}
 
 		private function con () {
-			$this->db = new PDO("mysql:host=localhost;dbname=phptpl;charset=utf8;","root","");
+			$this->db = new PDO("mysql:host=localhost;dbname=tpl;charset=utf8;","root","");
 			// $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
 		}
 
