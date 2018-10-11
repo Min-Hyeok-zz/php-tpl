@@ -2,13 +2,18 @@
 	class memberController extends Controller {
 
 		function join () {
-			if (isset($_SESSION['member'])) move();
-			return ['title'=>'회원가입'];
+			memberChk();
+			$this->tpl->assign(["title"=>"회원가입"]);
 		}
 
 		function login () {
-			if (isset($_SESSION['member'])) move();
-			return ['title'=>'로그인'];
+			memberChk();
+			$this->tpl->assign(["title"=>"로그인"]);
+		}
+
+		function logout () {
+			loginChk();
+			access(session_destroy(),"로그아웃 되었습니다.","/");
 		}
 
 	}

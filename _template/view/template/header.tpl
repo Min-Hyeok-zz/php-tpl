@@ -10,13 +10,21 @@
 <!-- {/} -->
 </head>
 <body>
+	
 	<header class="header">
 		<nav class="gnb">
 			<ul class="menu">
+				<li class="menu-list"><a href="/">메인</a></li>
+				<li class="menu-list"><a href="/board/list">게시판</a></li>
+				<!-- {? member} -->
+				<li class="menu-list">{member['name']}</li>
+				<li class="menu-list"><a href="/member/logout">로그아웃</a></li>
+				<!-- {: } -->
 				<li class="menu-list"><a href="/member/join">회원가입</a></li>
-				<li class="menu-list"><a href="#!">로그인</a></li>
-				<li class="menu-list"><a href="#!">로그아웃</a></li>
-				<li class="menu-list"><a href="#!">게시판으로</a></li>
+				<li class="menu-list"><a href="/member/login">로그인</a></li>
+				<!-- {/} -->
 			</ul>
 		</nav>
 	</header>
+
+	

@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2018/10/09 16:04:00 D:\xampp\htdocs\_template\view\template\header.tpl 000000841 */ ?>
+<?php /* Template_ 2.2.8 2018/10/11 16:30:41 D:\xampp\htdocs\_template\view\template\header.tpl 000001096 */ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +11,19 @@
 <!-- <?php }?> -->
 </head>
 <body>
+	
 	<header class="header">
 		<nav class="gnb">
 			<ul class="menu">
+				<li class="menu-list"><a href="/">메인</a></li>
+				<li class="menu-list"><a href="/board/list">게시판</a></li>
+				<!-- <?php if($TPL_VAR["member"]){?> -->
+				<li class="menu-list"><?php echo $TPL_VAR["member"]['name']?></li>
+				<li class="menu-list"><a href="/member/logout">로그아웃</a></li>
+				<!-- <?php }else{?> -->
 				<li class="menu-list"><a href="/member/join">회원가입</a></li>
-				<li class="menu-list"><a href="#!">로그인</a></li>
-				<li class="menu-list"><a href="#!">로그아웃</a></li>
-				<li class="menu-list"><a href="#!">게시판으로</a></li>
+				<li class="menu-list"><a href="/member/login">로그인</a></li>
+				<!-- <?php }?> -->
 			</ul>
 		</nav>
 	</header>

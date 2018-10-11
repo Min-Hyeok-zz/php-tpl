@@ -8,8 +8,8 @@
 		}
 
 		function login () {
-			$this->sql = "SELECT * FROM member where id=? and pw=?";
-			$this->exeArr = [$_POST['id'],$_POST['pw']];
+			$this->sql = "SELECT id,name FROM member where id=? and pw=?";
+			$this->exeArr = [$_POST['id'],hash("sha512",$_POST['pw'])];
 			return $this->fetch();
 		}
 
@@ -18,9 +18,7 @@
 				case 'join':
 					access($this->idChk() > 0,"이미 사용중인 아이디 입니다.");
 					$this->sql = "INSERT INTO member SET id=?, pw=?, name=?";
-					$this->exrArr = $this->getExeArr($_POST,'/action');
-					print_r($this->getExeArr($_POST,'/action'));
-					exit;
+					$this->getExeArr($_POST,'/action');
 					$this->query();
 				break;
 				case 'login':

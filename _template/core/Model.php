@@ -9,7 +9,7 @@
 
 		private function con () {
 			$this->db = new PDO("mysql:host=localhost;dbname=phptpl;charset=utf8;","root","");
-			$this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
+			// $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ);
 		}
 
 		private function cls () {
@@ -37,24 +37,25 @@
 		}
 
 		protected function fetchAll ($sql = false) {
+			if ($sql) $this->sql = $sql;
 			return $this->query()->fetchAll($sql);
 		}
 
 		protected function rowCount ($sql = false) {
+			if ($sql) $this->sql = $sql;
 			return $this->query()->rowCount($sql);
 		}
 
-		//exeArr 배열생성
+		//$_POST에서 exeArr 배열 얻어옴
 		protected function getExeArr ($post,$cancel) {
 			$cancel = explode("/", $cancel);
 			$column = "";
 			foreach ($post as $key => $val) {
 				if (!in_array($key, $cancel)) {
-					$column .= ",".$val;
+					$column .= in_array($key,['pw']) ? ",".hash("sha512",$val) : ",".$val;
 				}
 			}
-			$column = explode(",", substr($column,1));
-			return $column;
+			$this->exeArr = explode(",", substr($column,1));
 		}
 
 	}

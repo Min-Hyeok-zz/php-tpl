@@ -30,6 +30,16 @@
 		echo "</pre>";
 	}
 
+	//login chk
+	function loginChk () {
+		access(!isset($_SESSION['member']),"회원만 접근할 수 있습니다.");
+	}
+
+	//member chk
+	function memberChk () {
+		access(isset($_SESSION['member']),"이미 로그인 하셨습니다.");
+	}
+
 	//autoload
 	function __autoload ($className) {
 		$className2 = strtolower($className);
